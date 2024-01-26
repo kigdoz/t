@@ -104,7 +104,7 @@ if __name__ == "__main__":
         clear()
         typing_effect("Nhập tên tệp chứa proxy để kiểm tra (Ví dụ: proxy.txt): ")
         filename = input("> \033[0m")
-        num_threads = 800
+        num_threads = 25000
         os.system("cls" if os.name == "nt" else "clear")
         check_live_proxies(filename, num_threads)
     except KeyboardInterrupt:

